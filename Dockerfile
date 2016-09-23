@@ -9,6 +9,11 @@ RUN add-apt-repository ppa:ondrej/php -y
 RUN apt-get update
 
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash
+
+# setup for use
+ENV NVM_DIR "/root/.nvm"
+RUN [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
 RUN command -v nvm
 RUN nvm install 6.2.2
 RUN nvm alias default 6.2.2
