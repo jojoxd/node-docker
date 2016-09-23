@@ -14,7 +14,7 @@ RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh
 ENV NVM_DIR "/root/.nvm"
 RUN [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-RUN command -v nvm
+# RUN command -v nvm
 RUN nvm install 6.2.2
 RUN nvm alias default 6.2.2
 RUN nvm use default
