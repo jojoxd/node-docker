@@ -19,10 +19,11 @@ ENV PATH ${PATH}:`yarn global bin`
 RUN yarn global add npm@^5.4.0
 
 # for windows packaging using electron-packager
-RUN curl -sS https://dl.winehq.org/wine-builds/Release.key | apt-key add -
-RUN apt-add-repository -y 'https://dl.winehq.org/wine-builds/ubuntu/' && apt-get update
-RUN dpkg --add-architecture i386
-RUN apt-get install -y wine-stable
+# RUN curl -sS https://dl.winehq.org/wine-builds/Release.key | apt-key add -
+# RUN apt-add-repository -y 'https://dl.winehq.org/wine-builds/ubuntu/' && apt-get update
+# RUN dpkg --add-architecture i386
+# RUN apt-get install -y wine-stable
+RUN add-apt-repository ppa:ubuntu-wine/ppa && apt-get update && apt-get install -y --no-install-recommends wine1.8
 
 RUN node -v
 RUN npm -v
