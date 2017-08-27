@@ -11,6 +11,7 @@ RUN apt-get update \
 
 # for windows packaging using electron-packager
 RUN add-apt-repository ppa:ubuntu-wine/ppa \
+	&& dpkg --add-architecture i386 \
 	&& apt-get update \
 	&& apt-get upgrade -y \
 	&& apt-get install -y --no-install-recommends wine wine1.8
