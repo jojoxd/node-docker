@@ -21,7 +21,7 @@ RUN yarn global add npm@^5.4.0
 # for windows packaging using electron-packager
 RUN curl -sS https://dl.winehq.org/wine-builds/Release.key | apt-key add -
 RUN apt-add-repository -y 'https://dl.winehq.org/wine-builds/ubuntu/' && apt-get update
-RUN apt-get install -y wine-stable:i386
+RUN apt-get install -y winehq-stable:i386
 
 RUN node -v
 RUN npm -v
