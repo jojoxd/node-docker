@@ -33,7 +33,7 @@ RUN yarn global add npm@^5.4.0
 RUN add-apt-repository ppa:ubuntu-wine/ppa \
 	&& apt-get update \
 	&& apt-get upgrade -y \
-	&& apt-get install -y --no-install-recommends wine
+	&& apt-get install -y wine wine1.8
 
 # ruby & sass
 RUN apt-get install -y ruby ruby-dev \
