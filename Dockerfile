@@ -8,12 +8,15 @@ RUN add-apt-repository ppa:ondrej/php -y
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
-RUN npm install -g npm@^5.4.0
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && apt-get remove -y cmdtest && apt-get install -y yarn
 ENV PATH ${PATH}:`yarn global bin`
+
+# we need npm ^5.4.0 - see https://github.com/electron-userland/electron-packager/issues/712
+# https://github.com/npm/npm/issues/16807#issuecomment-313591975
+RUN yarn global add npm@^5.4.0
 
 RUN node -v
 RUN npm -v
