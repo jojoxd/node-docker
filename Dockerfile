@@ -19,7 +19,7 @@ ENV PATH ${PATH}:`yarn global bin`
 RUN yarn global add npm@^5.4.0
 
 # for windows packaging using electron-packager
-RUN apt-get install wine
+RUN apt-get install -y wine
 
 RUN node -v
 RUN npm -v
