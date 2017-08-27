@@ -9,6 +9,13 @@ RUN apt-get update \
 	&& apt-get install -y software-properties-common python-software-properties bzip2 unzip openssh-client git lib32stdc++6 lib32z1 expect build-essential libssl-dev
 
 
+# for windows packaging using electron-packager
+RUN add-apt-repository ppa:ubuntu-wine/ppa \
+	&& apt-get update \
+	&& apt-get upgrade -y \
+	&& apt-get install -y --no-install-recommends wine wine1.8
+
+
 # Install NodeJS
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
 	&& apt-get install -y nodejs
@@ -29,12 +36,6 @@ ENV PATH ${PATH}:`yarn global bin`
 RUN yarn global add npm@^5.4.0
 
 
-# for windows packaging using electron-packager
-RUN add-apt-repository ppa:ubuntu-wine/ppa \
-	&& apt-get update \
-	&& apt-get upgrade -y \
-	&& apt-get install -y wine wine1.8
-
 # ruby & sass
 RUN apt-get install -y ruby ruby-dev \
 	&& gem install sass
@@ -43,6 +44,7 @@ RUN apt-get install -y ruby ruby-dev \
 RUN add-apt-repository ppa:ondrej/php -y \
 	&& apt-get update \
 	&& apt-get install -y --allow-unauthenticated php5.6 php5.6-cli php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-xml
+
 
 # grunt
 RUN npm install --global grunt
