@@ -9,13 +9,15 @@ RUN apt-get update \
 	&& apt-get install -y software-properties-common python-software-properties bzip2 unzip openssh-client git lib32stdc++6 lib32z1 expect build-essential libssl-dev
 
 
-# for windows packaging using electron-packager
+# for packaging anything using electron-builder & electron-packager
 RUN add-apt-repository ppa:ubuntu-wine/ppa \
 	&& dpkg --add-architecture i386 \
 	&& apt-get update \
 	&& apt-get upgrade -y \
-	&& apt-get install -y --no-install-recommends wine wine1.8
-
+	&& apt-get install -y --no-install-recommends wine wine1.8 \
+	&& apt-get install -y gcc-multilib g++-multilib \
+	&& apt-get install -y --no-install-recommends rpm bsdtar \
+	&& apt-get install -y --no-install-recommends icnsutils graphicsmagick xz-utils
 
 # Install NodeJS
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
