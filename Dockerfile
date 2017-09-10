@@ -17,7 +17,7 @@ RUN add-apt-repository ppa:ubuntu-wine/ppa \
 	&& apt-get install -y --no-install-recommends wine wine1.8 \
 	&& apt-get install -y gcc-multilib g++-multilib \
 	&& apt-get install -y --no-install-recommends rpm bsdtar \
-	&& apt-get install -y --no-install-recommends icnsutils graphicsmagick xz-utils
+	&& apt-get install -y --no-install-recommends icnsutils graphicsmagick xz-utils p7zip
 
 # Install NodeJS
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
